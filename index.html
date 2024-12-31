@@ -8,17 +8,63 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap"
       rel="stylesheet"
     />
   </head>
 
   <body>
     <main class="h-screen w-screen grid place-items-center">
-      <section class="border rounded-md border-gray-400/40 p-4 w-96">
-        <h2 class="font-semibold text-2xl">Todo</h2>
+      <section
+        class="border flex flex-col gap-2 border-gray-400/20 p-4 rounded-md w-96"
+      >
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold">Todo</h1>
+          <button
+            onclick="createTaskForm.openDialog()"
+            class="ml-auto bg-emerald-700 rounded-lg h-fit text-sm py-1 px-2"
+          >
+            Create Task
+          </button>
+        </div>
+
+        <div class="flex gap-2 bg-gray-500/30 px-4 py-2 rounded-md">
+          <input type="checkbox" />
+          <p>Study</p>
+          <p class="text-gray-200/60">Tuesday, Oct 24</p>
+          <button class="ml-auto bg-red-600 rounded-md px-2 text-xs">
+            Delete
+          </button>
+        </div>
+
+        <div class="flex gap-2 bg-gray-500/30 px-4 py-2 rounded-md">
+          <input type="checkbox" />
+          <p>Study</p>
+          <p class="text-gray-200/60">Tuesday, Oct 24</p>
+          <button class="ml-auto bg-red-600 rounded-md px-2 text-xs">
+            Delete
+          </button>
+        </div>
+
+        <div class="flex gap-2 bg-gray-500/30 px-4 py-2 rounded-md">
+          <input type="checkbox" />
+          <p>Study</p>
+          <p class="text-gray-200/60">Tuesday, Oct 24</p>
+          <button class="ml-auto bg-red-600 rounded-md px-2 text-xs">
+            Delete
+          </button>
+        </div>
       </section>
     </main>
+
+    <dialog
+      id="createTaskForm"
+      class="absolute opacity-0 scale-0 open:opacity-100 open:scale-100 top-0 left-0 h-screen w-screen grid place-items-center bg-black/5 backdrop-blur-sm"
+    >
+      <div class="bg-black p-4 rounded-md">
+        <!-- <button onclick="createForm.closeModal()">X</button> -->
+      </div>
+    </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

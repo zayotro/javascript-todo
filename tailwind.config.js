@@ -2,7 +2,13 @@
 export default {
   content: ["*"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: '"Noto Sans Mono", serif',
+        serif: '"Noto Sans Mono", serif',
+        mono: '"Noto Sans Mono", serif',
+      },
+    },
   },
   plugins: [],
 };
