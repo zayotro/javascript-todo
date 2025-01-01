@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,55 +14,76 @@
   </head>
 
   <body>
-    <main class="h-screen w-screen grid place-items-center">
+    <main class="grid h-screen w-screen place-items-center">
       <section
-        class="border flex flex-col gap-2 border-gray-400/20 p-4 rounded-md w-96"
+        class="flex w-96 flex-col gap-2 rounded-md border border-gray-400/20 p-4"
       >
         <div class="flex items-center">
           <h1 class="text-2xl font-bold">Todo</h1>
           <button
-            onclick="createTaskForm.openDialog()"
-            class="ml-auto bg-emerald-700 rounded-lg h-fit text-sm py-1 px-2"
+            onclick="createTaskFormDialog.showModal()"
+            class="ml-auto h-fit rounded-lg bg-emerald-700 px-2 py-1 text-sm"
           >
             Create Task
           </button>
         </div>
 
-        <div class="flex gap-2 bg-gray-500/30 px-4 py-2 rounded-md">
+        <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
           <input type="checkbox" />
           <p>Study</p>
           <p class="text-gray-200/60">Tuesday, Oct 24</p>
-          <button class="ml-auto bg-red-600 rounded-md px-2 text-xs">
+          <button class="ml-auto rounded-md bg-red-600 px-2 text-xs"
+          onclick="deleteTaskModal.showModal()"
+          
+          >
             Delete
           </button>
         </div>
 
-        <div class="flex gap-2 bg-gray-500/30 px-4 py-2 rounded-md">
+        <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
           <input type="checkbox" />
           <p>Study</p>
           <p class="text-gray-200/60">Tuesday, Oct 24</p>
-          <button class="ml-auto bg-red-600 rounded-md px-2 text-xs">
+          <button class="ml-auto rounded-md bg-red-600 px-2 text-xs">
             Delete
           </button>
         </div>
 
-        <div class="flex gap-2 bg-gray-500/30 px-4 py-2 rounded-md">
+        <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
           <input type="checkbox" />
           <p>Study</p>
           <p class="text-gray-200/60">Tuesday, Oct 24</p>
-          <button class="ml-auto bg-red-600 rounded-md px-2 text-xs">
+          <button class="ml-auto rounded-md bg-red-600 px-2 text-xs">
             Delete
           </button>
         </div>
       </section>
     </main>
 
-    <dialog
-      id="createTaskForm"
-      class="absolute opacity-0 scale-0 open:opacity-100 open:scale-100 top-0 left-0 h-screen w-screen grid place-items-center bg-black/5 backdrop-blur-sm"
-    >
-      <div class="bg-black p-4 rounded-md">
-        <!-- <button onclick="createForm.closeModal()">X</button> -->
+    <dialog id="createTaskFormDialog" class="modal">
+      <div class="w-96 rounded-md bg-black p-4">
+        <div class="mb-2 flex">
+          <p class="font-semibold">Create a Task</p>
+          <button class="ml-auto" onclick="createTaskFormDialog.close()">
+            X
+          </button>
+        </div>
+
+        <form class="flex flex-col gap-2">
+          <input class="rounded p-1" placeholder="Enter Task Name" />
+          <button class="rounded bg-gray-500/30 p-1">Submit</button>
+        </form>
+      </div>
+    </dialog>
+    <dialog id="deleteTaskModal" class="modal">
+      <div class="bg-black w-96 p-4 rounded-md">
+        <div class="mb-2 flex">
+          <p class="font-semibold">Delete a Task</p>
+          <button class="ml-auto" onclick="deleteTaskModal.close()">
+            X
+          </button>
+        </div>
+
       </div>
     </dialog>
     <script type="module" src="/src/main.js"></script>

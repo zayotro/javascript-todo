@@ -17,3 +17,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@layer components {
+  .modal {
+    @apply hidden bg-black/5 backdrop-blur-sm open:grid absolute top-0 left-0 h-screen w-screen place-items-center;
+  }
+}
