@@ -13,6 +13,12 @@
     />
   </head>
 
+  <template id="no-tasks">
+    <div class="grid h-64 place-items-center rounded-md bg-gray-500/20">
+      No tasks
+    </div>
+  </template>
+
   <body>
     <main class="grid h-screen w-screen place-items-center">
       <section
@@ -27,36 +33,19 @@
             Create Task
           </button>
         </div>
-
-        <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
-          <input type="checkbox" />
-          <p>Study</p>
-          <p class="text-gray-200/60">Tuesday, Oct 24</p>
-          <button class="ml-auto rounded-md bg-red-600 px-2 text-xs"
-          onclick="deleteTaskModal.showModal()"
-          
-          >
-            Delete
-          </button>
-        </div>
-
-        <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
-          <input type="checkbox" />
-          <p>Study</p>
-          <p class="text-gray-200/60">Tuesday, Oct 24</p>
-          <button class="ml-auto rounded-md bg-red-600 px-2 text-xs">
-            Delete
-          </button>
-        </div>
-
-        <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
-          <input type="checkbox" />
-          <p>Study</p>
-          <p class="text-gray-200/60">Tuesday, Oct 24</p>
-          <button class="ml-auto rounded-md bg-red-600 px-2 text-xs">
-            Delete
-          </button>
-        </div>
+        <section id="task-list" class="max-h-64 overflow-auto">
+          <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
+            <input type="checkbox" />
+            <p>First</p>
+            <p class="text-gray-200/60">Tuesday, Oct 24</p>
+            <button
+              class="ml-auto rounded-md bg-red-600 px-2 text-xs"
+              onclick="deleteTaskModal.showModal()"
+            >
+              Delete
+            </button>
+          </div>
+        </section>
       </section>
     </main>
 
@@ -69,23 +58,42 @@
           </button>
         </div>
 
-        <form class="flex flex-col gap-2">
-          <input class="rounded p-1" placeholder="Enter Task Name" />
+        <form class="flex flex-col gap-2" id="createTaskForm" method="dialog">
+          <input
+            class="rounded p-1"
+            placeholder="Enter Task Name"
+            name="taskName"
+          />
           <button class="rounded bg-gray-500/30 p-1">Submit</button>
         </form>
       </div>
     </dialog>
+
     <dialog id="deleteTaskModal" class="modal">
-      <div class="bg-black w-96 p-4 rounded-md">
+      <div class="w-96 rounded-md bg-black p-4">
         <div class="mb-2 flex">
-          <p class="font-semibold">Delete a Task</p>
-          <button class="ml-auto" onclick="deleteTaskModal.close()">
-            X
+          <p class="font-semibold">Delete this Task?</p>
+          <p>
+            <button class="ml-auto" onclick="deleteTaskModal.close()">X</button>
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            class="mb-2 rounded bg-emerald-700 p-1 px-2 text-sm font-semibold"
+            onclick="deleteTaskModal.close()"
+          >
+            Cancel
+          </button>
+          <button
+            class="mb-2 rounded bg-red-600 p-1 px-2 text-sm font-semibold"
+            onclick="deleteTaskModal.close()"
+          >
+            Delete
           </button>
         </div>
-
       </div>
     </dialog>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
