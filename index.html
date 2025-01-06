@@ -19,6 +19,22 @@
     </div>
   </template>
 
+  <template id="task-item-template">
+    <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
+      <input type="checkbox" />
+
+      <p>
+        <slot name="title">Task Name</slot>
+      </p>
+
+      <p class="text-gray-200/60">
+        <slot name="date">Due Date</slot>
+      </p>
+
+      <button class="ml-auto rounded-md bg-red-600 px-2 text-xs">Delete</button>
+    </div>
+  </template>
+
   <body>
     <main class="grid h-screen w-screen place-items-center">
       <section
@@ -33,18 +49,13 @@
             Create Task
           </button>
         </div>
-        <section id="task-list" class="max-h-64 overflow-auto">
-          <div class="flex gap-2 rounded-md bg-gray-500/30 px-4 py-2">
-            <input type="checkbox" />
-            <p>First</p>
-            <p class="text-gray-200/60">Tuesday, Oct 24</p>
-            <button
-              class="ml-auto rounded-md bg-red-600 px-2 text-xs"
-              onclick="deleteTaskModal.showModal()"
-            >
-              Delete
-            </button>
-          </div>
+        <section
+          id="task-list"
+          class="flex max-h-64 flex-col gap-2 overflow-auto"
+        >
+          <task-item date="21 October, 2025" title="Task one"></task-item>
+          <task-item date="22 October, 2025" title="Task two"></task-item>
+          <task-item date="23 October, 2025" title="Task three"></task-item>
         </section>
       </section>
     </main>
@@ -95,5 +106,6 @@
     </dialog>
 
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/task-tile-element.js"></script>
   </body>
 </html>
